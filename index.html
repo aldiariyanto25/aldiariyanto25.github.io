@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Arris Ahmad Fadillah</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4adec6;
+            --bg-dark: #1a2332;
+            --text-light: #e0e0e0;
+            --text-muted: #b0c4de;
+            --text-secondary: #8b9db5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background - Full Page */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: pulse 4s ease-in-out infinite;
+            opacity: 0.15;
+        }
+
+        .star {
+            position: absolute;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            opacity: 0.2;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .circuit-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-color);
+            animation: glow 3s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .music-note {
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            opacity: 0.15;
+            animation: float-note 12s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.25; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--primary-color); opacity: 0.2; }
+            50% { box-shadow: 0 0 12px var(--primary-color); opacity: 0.4; }
+        }
+
+        @keyframes float-note {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* All content above background */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(26, 35, 50, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(74, 222, 194, 0.1);
+            padding: 20px 0;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-muted) !important;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            margin: 0 10px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%234adec6' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(74, 222, 194, 0.3);
+        }
+
+        .hero-title {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: #fff;
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-name span {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        .hero-subtitle span {
+            color: var(--primary-color);
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            max-width: 850px;
+            margin: 0 auto 40px;
+        }
+
+        .quote-box {
+            background: rgba(74, 222, 194, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 30px 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .quote-text .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .quote-text .highlight-blue {
+            color: #6fb3e0;
+            font-weight: 600;
+        }
+
+        .quote-author {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Section Styling */
+        .section {
+            background: rgba(26, 35, 50, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 194, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 35px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section h2 i {
+            margin-right: 15px;
+        }
+
+        /* Skill Cards */
+        .skill-card {
+            background: rgba(74, 222, 194, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(74, 222, 194, 0.2);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 222, 194, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .skill-card h3 i {
+            margin-right: 10px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-card li {
+            padding: 10px 0;
+            color: var(--text-muted);
+        }
+
+        .skill-card li::before {
+            content: '▹';
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            background: rgba(74, 222, 194, 0.03);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(15px);
+            background: rgba(74, 222, 194, 0.08);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            color: #6fb3e0;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Social Links */
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(74, 222, 194, 0.1);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(74, 222, 194, 0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .profile-img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .quote-box {
+                padding: 25px 20px;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .quote-text {
+                font-size: 0.95rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background - Full Page -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand" href="#home">Portofolio Arris Ahmad Fadillah</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pengalaman">Pengalaman</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#keahlian">Keahlian</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    </ul>
+                    <button class="theme-toggle ms-3"><i class="fas fa-sun"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="hero-content">
+                            <div class="mb-4">
+                                <img src="" alt="Arris Ahmad Fadillah" class="profile-img">
+                            </div>
+
+                            <div class="hero-title">
+                                Halo, saya <span>Arris Ahmad Fadillah</span>
+                            </div>
+
+                            <h1 class="hero-name">
+                                <span>Arris Ahmad Fadillah</span>
+                            </h1>
+
+                            <div class="hero-subtitle">
+                                Mahasiswa Teknik Elektro & <span>Pecinta Robotika.</span>
+                            </div>
+
+                            <p class="hero-description">
+                                Saya memiliki minat yang kuat dalam merancang sirkuit, mengembangkan sistem tertanam atau IoT, 
+                                dan Riset. Saat ini saya sedang menekuni bidang Tenaga Listrik atau yang biasa disebut Teknik 
+                                Elektro, namun selain di perkuliahan saya juga sedang menempuh pembelajaran mandiri terkait 
+                                bidang seperti Machine Learning dan Cloud Computing.
+                            </p>
+
+                            <div class="quote-box">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <div class="quote-text">
+                                    "Good enough to do <span class="highlight">anything</span>, but being <span class="highlight-blue">irreplaceable</span> for doing <span class="highlight">one thing</span>"
+                                </div>
+                                <div class="quote-author">My Motto in Engineering</div>
+                            </div>
+
+                            <div class="social-links mt-4">
+                                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <div class="container py-5" id="keahlian">
+            <section class="section">
+                <h2><i class="fas fa-code"></i> Keahlian Teknis</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="skill-card">
+                            <h3><i class="fas fa-bolt"></i> Teknik Elektro</h3>
+                            <ul>
+                                <li>Sistem Tenaga Listrik</li>
+                                <li>Elektronika Daya</li>
+                                <li>Kontrol & Instrumentasi</li>
+                                <li>PLC Programming</li>
+                                <li>AutoCAD Electrical</li>
+                                <li>MATLAB/Simulink</li>
+                                <li>PCB Design</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="skill-card">
+                            <h3><i class="fas fa-robot"></i> Robotika & IoT</h3>
+                            <ul>
+                                <li>Arduino & ESP32</li>
+                                <li>Raspberry Pi</li>
+                                <li>Sensor Integration</li>
+                                <li>Embedded Systems</li>
+                                <li>IoT Development</li>
+                                <li>ROS (Robot Operating System)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="skill-card">
+                            <h3><i class="fas fa-laptop-code"></i> Programming</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>C/C++</li>
+                                <li>Machine Learning</li>
+                                <li>TensorFlow & PyTorch</li>
+                                <li>Cloud Computing</li>
+                                <li>Git & Version Control</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section" id="pengalaman">
+                <h2><i class="fas fa-briefcase"></i> Pengalaman</h2>
+                
+                <div class="timeline-item">
+                    <h3>Research Assistant - Lab Robotika Universitas</h3>
+                    <span class="timeline-date">Jan 2023 - Sekarang</span>
+                    <p class="timeline-desc">
+                        Melakukan riset dan pengembangan sistem robot autonomous menggunakan computer vision 
+                        dan machine learning. Berkolaborasi dalam proyek kompetisi robotika nasional dan 
+                        internasional. Mengembangkan algoritma path planning dan obstacle avoidance.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>IoT Developer - PT Teknologi Cerdas Indonesia</h3>
+                    <span class="timeline-date">Jun 2022 - Des 2022</span>
+                    <p class="timeline-desc">
+                        Merancang dan mengimplementasikan sistem monitoring energi berbasis IoT untuk smart building. 
+                        Mengintegrasikan sensor dengan cloud platform untuk real-time data analytics. 
+                        Berhasil mengurangi konsumsi energi hingga 20% melalui optimasi sistem.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Intern - Divisi Maintenance PT PLN</h3>
+                    <span class="timeline-date">Jul 2021 - Sep 2021</span>
+                    <p class="timeline-desc">
+                        Membantu proses pemeliharaan dan troubleshooting sistem distribusi tenaga listrik. 
+                        Melakukan analisis load flow dan studi koordinasi proteksi. 
+                        Mempelajari standar operasional sistem kelistrikan di industri.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+                
+                <div class="timeline-item">
+                    <h3>S1 Teknik Elektro - Universitas Indonesia</h3>
+                    <span class="timeline-date">2020 - Sekarang</span>
+                    <p class="timeline-desc">
+                        <strong>IPK: 3.82 / 4.00</strong><br>
+                        Konsentrasi: Sistem Tenaga Listrik & Robotika<br>
+                        Aktif di organisasi: Himpunan Mahasiswa Elektro, UKM Robotika<br>
+                        Prestasi: Juara 2 Kompetisi Robot Line Follower Nasional 2022
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Sertifikasi & Pelatihan</h3>
+                    <span class="timeline-date">2021 - 2024</span>
+                    <p class="timeline-desc">
+                        • Machine Learning Specialization - Coursera (2024)<br>
+                        • AWS Cloud Practitioner - Amazon Web Services (2023)<br>
+                        • PLC Programming - Siemens Industrial Automation (2023)<br>
+                        • Python for Data Science - DataCamp (2022)<br>
+                        • Embedded Systems Design - Udemy (2021)
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Arris Ahmad Fadillah | Teknik Elektro & Robotika Enthusiast</p>
+            <p class="mt-2" style="opacity: 0.7;">Built with passion for engineering and innovation</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Generate Minimal Animated Background - Full Page
+        const animatedBg = document.getElementById('animatedBg');
+        
+        // Create fewer circuit lines (reduced from 20 to 8)
+        for (let i = 0; i < 8; i++) {
+            const line = document.createElement('div');
+            line.className = 'circuit-line';
+            
+            const isHorizontal = Math.random() > 0.5;
+            if (isHorizontal) {
+                line.style.width = Math.random() * 200 + 100 + 'px';
+                line.style.height = '1px';
+                line.style.left = Math.random() * 100 + '%';
+                line.style.top = Math.random() * 100 + '%';
+            } else {
+                line.style.width = '1px';
+                line.style.height = Math.random() * 200 + 100 + 'px';
+                line.style.left = Math.random() * 100 + '%';
+                line.style.top = Math.random() * 100 + '%';
+            }
+            
+            line.style.animationDelay = Math.random() * 4 + 's';
+            animatedBg.appendChild(line);
+        }
+        
+        // Create fewer circuit nodes (reduced from 30 to 10)
+        for (let i = 0; i < 10; i++) {
+            const node = document.createElement('div');
+            node.className = 'circuit-node';
+            node.style.left = Math.random() * 100 + '%';
+            node.style.top = Math.random() * 100 + '%';
+            node.style.animationDelay = Math.random() * 3 + 's';
+            animatedBg.appendChild(node);
+        }
+        
+        // Create fewer musical notes (reduced from 15 to 5)
+        const notes = ['♪', '♫', '🎵'];
+        for (let i = 0; i < 5; i++) {
+            const note = document.createElement('div');
+            note.className = 'music-note';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * 100 + '%';
+            note.style.top = Math.random() * 100 + '%';
+            note.style.animationDelay = Math.random() * 10 + 's';
+            note.style.animationDuration = (Math.random() * 8 + 12) + 's';
+            animatedBg.appendChild(note);
+        }
+
+        // Create fewer stars (reduced from 60 to 20)
+        for (let i = 0; i < 20; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.textContent = '★';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            animatedBg.appendChild(star);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Auto close navbar on mobile after clicking link
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
